@@ -1,0 +1,12 @@
+@using BootstrapSupport
+@model IEnumerable<MovieFu.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>@Model.GetLabel() <small>Listing</small></h4>
+@{ Html.RenderPartial("_List", Model); }
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn" })
+</p>

@@ -1,0 +1,23 @@
+﻿
+<!-- Statement Block -->
+@{
+    string welcomeMessage = string.Empty;
+
+    string showHelpMessage = "hide";
+
+    if (Request.QueryString.Count > 0)
+    {
+        welcomeMessage = string.Format("Hello {0}", Request.QueryString[0]);
+    }
+    else
+    {
+        showHelpMessage = null;
+    }
+}
+
+<h2>@welcomeMessage</h2>
+
+<p class="@showHelpMessage">
+    Oops! Looks like you didn't pass in a message on the querystring.
+    Try <a href="@Url.Action("Index", new { message = "YourName" })">this one</a>.
+</p>

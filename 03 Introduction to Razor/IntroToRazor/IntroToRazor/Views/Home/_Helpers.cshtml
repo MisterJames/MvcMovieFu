@@ -1,0 +1,9 @@
+﻿@model IntroToRazor.Models.SimpleModel
+
+<form>
+
+    <p>@Html.LabelFor(m=>m.FirstName): @Html.TextBoxFor(m => m.FirstName)</p>
+    <p>@Html.LabelFor(m=>m.LastName): @Html.TextBoxFor(m => m.LastName)</p>
+    <p>@Html.LabelFor(m=>m.Country): @Html.DropDownListFor(m => m.Country, (IEnumerable<SelectListItem>)ViewBag.PossibleCountries)</p>
+
+</form>

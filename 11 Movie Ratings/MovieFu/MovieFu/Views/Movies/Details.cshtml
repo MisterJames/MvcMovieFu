@@ -1,0 +1,66 @@
+@model MovieFu.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Movie</legend>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">@Model.Title</div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">@Model.Description</div>
+
+    <div class="display-label">ReleaseYear</div>
+    <div class="display-field">@Model.ReleaseYear</div>
+
+    <div class="display-label">Director</div>
+    <div class="display-field">@(Model.Director == null ? "None" : Model.Director.LastName)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<fieldset>
+    <legend>Ratings</legend>
+    <div id="ratings-list">
+        @{ Html.RenderPartial("_Ratings", Model.Ratings); }
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Add a Rating</legend>
+    @using (Ajax.BeginForm("AddRating", null, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ratings-list" }, new { @class = "form-horizontal" }))
+    {
+        <input type="hidden" value="@Model.Id" name="MovieId" />
+        @*<input type="hidden" value="@User.Identity.Name" name="Username" />*@
+        <div class="control-group">
+            <label class="control-label" for="Stars">Stars</label>
+            <div class="controls">
+                <input type="text" name="Stars" placeholder="Enter 1-5">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="Comments">Comments</label>
+            <div class="controls">
+                <textarea name="Comments" placeholder="Comments" ></textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-success">Add Comment</button>
+            </div>
+        </div>                      
+    }
+
+</fieldset>
+
+
+@section Scripts
+{
+    <script src="~/scripts/jquery.unobtrusive-ajax.js"></script>
+}

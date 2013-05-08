@@ -1,0 +1,28 @@
+﻿<!-- Single Statements -->
+
+@{ ViewBag.Title = "Welcome to Razor"; }
+
+<!-- Inline Expression -->
+<h1>@ViewBag.Title</h1>
+
+@{ Html.RenderPartial("_Welcome"); }
+
+<h2>Guessing Your Age</h2>
+@{ Html.RenderPartial("_GuessAge"); }
+
+<h2>I can see the contents of your file system</h2>
+@{ Html.RenderPartial("_JustJokes"); }
+
+<h2>Let's play with objects</h2>
+@{ Html.RenderPartial("_DumpRequest"); }
+
+<h2>Need some help?</h2>
+@{
+    var person = new IntroToRazor.Models.SimpleModel();
+    Html.RenderPartial("_Helpers", person);
+}
+
+<h2>Extending the Helpers</h2>
+@{ Html.RenderPartial("_TemplatedDelegates"); }
+
+<p style="margin-bottom:120px"><!-- for easier viewing ;o) --></p>

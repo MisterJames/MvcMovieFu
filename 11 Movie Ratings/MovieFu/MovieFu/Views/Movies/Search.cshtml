@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search For a Movie</h2>
+
+@using (Ajax.BeginForm("SearchResult", null, new AjaxOptions { HttpMethod = "POST", UpdateTargetId="search-results" }, new { @class = "form-search" }))
+{
+  <input type="text" class="input-medium search-query" id="searchText" name="searchText">
+  <button type="submit" class="btn" id="send-search">Search</button>
+}
+
+<div id="search-results"></div>
+
+@section Scripts
+{
+    <script src="~/scripts/jquery.unobtrusive-ajax.js"></script>
+}

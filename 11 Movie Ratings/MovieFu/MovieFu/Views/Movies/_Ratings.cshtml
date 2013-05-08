@@ -1,0 +1,19 @@
+﻿@model IEnumerable<MovieFu.Models.Rating> 
+
+<div class="row">
+    <table class="table span4">
+
+    @foreach (var rating in Model)
+    {
+        <tr>
+            <td class="span1">
+                <b>@rating.Username</b><br />
+                (@string.Format("{0:#} stars", rating.Stars))
+            </td>
+            <td class="span3">
+                @rating.Comments
+            </td>
+        </tr>
+    }
+    </table>
+</div>

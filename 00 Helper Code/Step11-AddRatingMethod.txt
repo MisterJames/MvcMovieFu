@@ -1,0 +1,12 @@
+        [HttpPost]
+        public PartialViewResult AddRating(Rating rating, string username)
+        {
+            if (ModelState.IsValid)
+            {
+                rating.Username = username;
+                _movieRepository.AddMovieRating(rating);
+                var ratings = _movieRepository.Get(rating.MovieId).Ratings;
+                return PartialView("_Ratings", ratings);
+            }
+            return PartialView();
+        }

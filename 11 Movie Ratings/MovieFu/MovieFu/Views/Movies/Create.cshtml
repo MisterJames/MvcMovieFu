@@ -1,0 +1,23 @@
+@using BootstrapSupport
+@model MovieFu.Models.Movie
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset class="form-horizontal">
+        <legend>@Model.GetLabel() <small>Create</small></legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+		<div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create</button>
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn " })
+          </div>
+
+    </fieldset>
+}
+
+

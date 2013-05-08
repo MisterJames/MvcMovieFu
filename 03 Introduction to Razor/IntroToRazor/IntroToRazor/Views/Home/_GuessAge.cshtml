@@ -1,0 +1,23 @@
+﻿    @{
+        // we're inside a statement block. we need to terminate line endings with
+        // semi-colons and all c# blocks in here need to have {} around them.
+
+        var age = new Random(Environment.TickCount).Next(17, 75);
+        
+        if(age > 55)
+        {
+            // this is code
+            <text>
+                <p>I guess that your age is @age. Enjoy the seniors discount at the buffet!</p>
+            </text>
+            // this is still code
+        }
+        else
+        {
+            <p>I figure you're around @age years old. Not bad, eh?</p>
+            // what? still code?!
+        }
+                
+        // p.s. Notice the c# style comments?    
+    }
+

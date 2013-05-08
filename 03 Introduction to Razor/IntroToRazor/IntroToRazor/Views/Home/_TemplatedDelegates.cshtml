@@ -1,0 +1,20 @@
+﻿@using IntroToRazor.Helpers
+
+@{ var items = new[] { "one", "two", "three" }; }
+
+<p>Using Straight Razor</p>
+    <ul>
+        @{
+            foreach (var item in items)
+            {
+                <li>@item</li>
+            }
+        }
+    </ul>
+
+<p>Using Templated Razor Delegates <i>(via <a href="http://haacked.com/archive/2011/02/27/templated-razor-delegates.aspx">Phil Haack</a>)</i></p> 
+
+<ul>
+    @items.List(@<li>@item</li>)
+</ul>
+

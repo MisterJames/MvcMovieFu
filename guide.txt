@@ -1,0 +1,135 @@
+Introduction to Bootstrap
+ - I'm not a designer!
+ - http://twitter.github.io/bootstrap/
+ - http://www.divshot.com/
+
+Create an "Internet" Project & Explore
+ - Find models, views, controllers
+ - Run the app, register, sign in
+
+Introduction to Razor
+ - Use the index and partial pages to explore
+
+Create an "Empty" Project
+ - install Twitter.Bootstrap.Mvc4
+ - add a Home controller
+    - inherit from BootstrapBaseController
+ - correct the Home navigation route
+ - comment out broken routes
+ - update your application name
+
+Introduce Models
+ [Start from 04]
+ - Person with PersonID, FirstName, LastName, Email, PhoneNumber
+ - Add PersonController
+ - Use "automatic scaffolded" view to display a list of people
+ - Add NavigationRoute to access Person controller through menu
+ GOING FURTHER
+ - Add data annotations for display names
+ - Add data annotations for validation
+   - First and last name required, regex on email and phone
+ - Add repository and return collection from there
+ - Add package AngelaSmith (version 1.0.0) and return 15 random people
+
+Add Data Context
+ [Start from 05]
+ - Add package EntityFramework
+ - Add MovieContext and inherit from DbContext
+ - Add the "People" table (DbSet)
+ - Enable Migrations
+ - Add-Migration InitialCreate
+ - Update-Database
+ - Update the repository to use the MovieContext
+ GOING FURTHER
+ - Set database initializer: MigrateDatabaseToLatestVersion
+ - Seed database with 15 random people
+ - Install-Package Ninject.Mvc3
+ - Extract interface for repository and add DI to PersonController for the repository
+
+Build out Create/Edit/Details/Delete
+ [Start from 06]
+ [Dicuss DI/IoC]
+ - Extend IPersonRepository to have Get(id) for single person return
+ - Implement Details method
+ - Extend IPersonRepository to have Add(newPerson)
+ - Implement Create methods (get and post) using PRG
+ - Extend IPersonRepository to have Delete(id)
+ - Implement Delete method with redirect
+ GOING FURTHER
+ - Add delete confirmation
+ - Add navigation route to create a new person
+ 
+Add Support for Movies
+ [Start from 07]
+ [Walkthrough EF Code First]
+ - Add Movie Model
+   - Id, Title, Description, ReleaseYear, Director, DirectorId
+   - All fields required
+   - Release Year should be greater than 1877, less than 2020
+ - Add movies to MovieContext
+ - Add Movie migration
+ - Update IPersonRepository to use IQueryable<> instead of List<>
+ - Create IMovieRepository, Implement crud methods (use IQueryable for Get)
+ - Update Ninject kernel bindings
+ - Install Package MvcScaffolding
+ - Scaffold Movie controller from package manager console
+ - Update controller to use IoC, remove Context, update repositories as required
+ GOING FURTHER
+ - Seed database with at least 3 movies
+ - Update Movie views to use Bootstrap styling
+ - Add navigation routes for movie index, create
+
+Implement Search Capabilities
+ [Start from 08]
+ [Review Partials and Helpers]
+ - Extract patial from movie index to "_List.cshtml"
+ - Add search method to movie controller
+ - Add search view with Ajax helper
+ - Add SearchResult method to movice controller (returns partial)
+ - Add SearchResult partial view, reuse our list partial
+ GOING FUTHER
+ - Add navigation route for movie searches
+ - Update Index with description of project
+ - Add About page with stats (number of movies, people)
+
+Add Authentication and Authorization
+ [Start from 09]
+ - Install package Microsoft.AspNet.WebPages.OAuth
+ - Add reference to System.Transactions
+ - Weave your web.config
+   - Web.Config
+      <connectionStrings>
+        <add name="DefaultConnection" connectionString="Data Source=(LocalDB)\v11.0;Database=MovieFuAuth;Integrated Security=True;" providerName="System.Data.SqlClient" />
+      </connectionStrings>      
+      
+      <system.web> ...     <authentication mode="Forms"> <forms loginUrl="~/Account/Login" timeout="2880" /> </authentication> ...</system.web>
+      
+   - Views\Web.config  
+      <namespaces>...<add namespace="System.Web.Optimization" />...</namespaces
+ - Integrate the auth filter (update namespaces)
+ - Integrate Account contoller, models and views (update namespaces)
+ - Add login partial from code helpers
+ - Update your layout to include the login partial
+ - Require Authorization for Movie and People controllers
+ GOING FURTHER
+ - Update views to match Bootstrap styling
+ - Add support for logging in via Facebook, Twitter or Google accounts
+ - Hide main menu if the user is not logged in
+
+Movie Ratings from Authenticated Users
+ [Start from 10]
+ - Add Ratings class (Id, Username, Stars, Comments, MovieId, Movie)
+ - Add ratings table to Movie context
+ - Update movie repository interface to allow "add ratings" & implement
+ - Update movie repository Get() to include ratings
+ - Update movie details view to include all ratings for the movie
+ - Add partial view to display the ratings in a table
+ - Add form (use Ajax Helper) to capture new ratings on Details view
+ - Add method AddRating to movie controller
+ - Add InjectUsernameAttribute from code helpers & examine
+ - Protect method from form attacks with InjectUsernameAttribute
+ GOING FURTHER
+ - Make the stars pretty with http://rateit.codeplex.com/ (use NuGet) 
+ - Clean up remaining views to look Bootstrappy
+ 
+ 

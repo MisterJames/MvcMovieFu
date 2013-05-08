@@ -1,0 +1,13 @@
+﻿@using BootstrapSupport
+@model IEnumerable<MovieFu.Models.Movie>
+
+@if (Model.Count() > 0)
+{
+    <h4>@Model.GetLabel() <small>Search Results</small></h4>
+    Html.RenderPartial("_List", Model);
+}
+else
+{
+    <p>Sorry, there were no matches for your query.</p>
+}
+
