@@ -131,5 +131,5 @@ Movie Ratings from Authenticated Users
  GOING FURTHER
  - Make the stars pretty with http://rateit.codeplex.com/ (use NuGet) 
  - Clean up remaining views to look Bootstrappy
- 
+ - Have average rating show up in movie _List partial
  
