@@ -20,14 +20,14 @@ Create an "Empty" Project
 
 Introduce Models
  [Start from 04]
- - Person with PersonID, FirstName, LastName, Email, PhoneNumber
+ - Person with Id, FirstName, LastName, Email, PhoneNumber
  - Add PersonController
  - Use "automatic scaffolded" view to display a list of people
  - Add NavigationRoute to access Person controller through menu
  GOING FURTHER
  - Add data annotations for display names
  - Add data annotations for validation
-   - First and last name required, regex on email and phone
+   - First and last name required, email and phone attributes
  - Add repository and return collection from there
  - Add package AngelaSmith (version 1.0.0) and return 15 random people
 
@@ -87,7 +87,7 @@ Implement Search Capabilities
  - Add search view with Ajax helper
  - Add SearchResult method to movice controller (returns partial)
  - Add SearchResult partial view, reuse our list partial
- GOING FUTHER
+ GOING FURTHER
  - Add navigation route for movie searches
  - Update Index with description of project
  - Add About page with stats (number of movies, people)
@@ -106,12 +106,15 @@ Add Authentication and Authorization
       
    - Views\Web.config  
       <namespaces>...<add namespace="System.Web.Optimization" />...</namespaces
- - Integrate the auth filter (update namespaces)
+ - Integrate the auth filter (from internet template) (update namespaces)
  - Integrate Account contoller, models and views (update namespaces)
  - Add login partial from code helpers
  - Update your layout to include the login partial
  - Require Authorization for Movie and People controllers
  GOING FURTHER
+ - Add AuthConfig from internet template 
+    - used to wire external providers
+    - need to call the config method from Global.asax
  - Update views to match Bootstrap styling
  - Add support for logging in via Facebook, Twitter or Google accounts
  - Hide main menu if the user is not logged in
@@ -120,6 +123,8 @@ Movie Ratings from Authenticated Users
  [Start from 10]
  - Add Ratings class (Id, Username, Stars, Comments, MovieId, Movie)
  - Add ratings table to Movie context
+ - Add ratings to Movie class (as ICollection)
+ - Add migration for ratings
  - Update movie repository interface to allow "add ratings" & implement
  - Update movie repository Get() to include ratings
  - Update movie details view to include all ratings for the movie

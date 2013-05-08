@@ -23,6 +23,6 @@ namespace MovieFu.Models
         public int ReleaseYear { get; set; }
 
         public virtual int DirectorId { get; set; }
-        public virtual Person Director { get; set; }
+        public virtual Person Director { get; set; }                                 
     }
 }
